@@ -31,6 +31,6 @@ fun RightTriangle(color: Color) {
 
 @Preview(showBackground = true)
 @Composable
-fun Preview() {
+fun PreviewRightTriangle() {
     RightTriangle(color = Purple40)
 }
