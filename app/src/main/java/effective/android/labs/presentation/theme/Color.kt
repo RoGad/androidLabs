@@ -2,7 +2,7 @@ package effective.android.labs.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Brown = Color(0xFFCC9B6D)
+val DarkWhite = Color(0xFFB8A0A0)
 val Beige = Color(0xFFF1CA89)
 
 val darkPrimary = Color(0xFF2B272B)

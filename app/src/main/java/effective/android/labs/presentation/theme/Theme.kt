@@ -15,8 +15,8 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Brown,
-    secondary = Beige,
+    primary = DarkWhite,
+    secondary = DarkWhite,
     background = Pink40,
     onSecondary = Color.Black
 )
