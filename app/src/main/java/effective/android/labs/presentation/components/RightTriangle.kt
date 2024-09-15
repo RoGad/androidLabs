@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.tooling.preview.Preview
-import effective.android.labs.presentation.theme.Purple40
+import effective.android.labs.presentation.theme.DarkRed
 
 @Composable
 fun RightTriangle(color: Color) {
@@ -32,5 +32,5 @@ fun RightTriangle(color: Color) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewRightTriangle() {
-    RightTriangle(color = Purple40)
+    RightTriangle(color = DarkRed)
 }

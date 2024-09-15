@@ -2,12 +2,14 @@ package effective.android.labs.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val Brown = Color(0xFFCC9B6D)
+val Beige = Color(0xFFF1CA89)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
+val darkPrimary = Color(0xFF2B272B)
+val darkCC = Color(0xFF6E85B2)
 val Pink40 = Color(0xFF7D5260)
 
 val White = Color(0xFFFFFFFF)
+val DarkRed = Color(0xFF941419)
+val DarkYellow = Color(0xFFE6B401)
+val RedDeadpool = Color(0xFF783333)
