@@ -19,11 +19,12 @@ import androidx.compose.ui.unit.sp
 import effective.android.labs.R
 import effective.android.labs.presentation.components.HeroListCard
 import effective.android.labs.presentation.components.RightTriangle
+import effective.android.labs.presentation.model.HeroData
 import effective.android.labs.presentation.theme.White
 import effective.android.labs.presentation.viewModel.HeroSelectionViewModel
 
 @Composable
-fun HeroSelectionScreen(viewModel: HeroSelectionViewModel) {
+fun HeroSelectionScreen(viewModel: HeroSelectionViewModel, onHeroClick: (HeroData) -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
 
         val triangleColor = viewModel.heroes[viewModel.currentHeroIndex.value].triangleColor
@@ -50,7 +51,7 @@ fun HeroSelectionScreen(viewModel: HeroSelectionViewModel) {
                     fontWeight = FontWeight.Bold
                 )
             )
-            HeroListCard(viewModel = viewModel)
+            HeroListCard(viewModel = viewModel, onHeroClick = onHeroClick)
         }
     }
 }

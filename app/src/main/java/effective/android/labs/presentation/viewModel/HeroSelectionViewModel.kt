@@ -11,9 +11,9 @@ import effective.android.labs.presentation.theme.RedDeadpool
 
 class HeroSelectionViewModel : ViewModel() {
     val heroes = listOf(
-        HeroData("Iron Man", R.drawable.ic_iron_man, DarkRed),
-        HeroData("Spider Man", R.drawable.ic_spider_card_image, DarkYellow),
-        HeroData("Deadpool", R.drawable.ic_deadpool, RedDeadpool)
+        HeroData("Iron Man", R.drawable.ic_iron_man, "I AM IRON MAN", DarkRed),
+        HeroData("Spider Man", R.drawable.ic_spider_card_image, "In iron suit", DarkYellow),
+        HeroData("Deadpool", R.drawable.ic_deadpool, "Please don’t make the super suit green...or animated!", RedDeadpool)
     )
 
     private val _currentHeroIndex = mutableIntStateOf(0)

@@ -26,11 +26,11 @@ import effective.android.labs.presentation.theme.DarkRed
 import effective.android.labs.presentation.theme.White
 
 @Composable
-fun HeroCard(modifier: Modifier = Modifier, heroData: HeroData) {
+fun HeroCard(modifier: Modifier = Modifier, heroData: HeroData, onHeroClick: (HeroData) -> Unit) {
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(10.dp),
-        onClick = { }
+        onClick = { onHeroClick(heroData) }
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
@@ -58,11 +58,3 @@ fun HeroCard(modifier: Modifier = Modifier, heroData: HeroData) {
         }
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewHeroCard(){
-    HeroCard(modifier = Modifier, heroData = HeroData("Iron Man", R.drawable.ic_iron_man, DarkRed))
-}
-
-

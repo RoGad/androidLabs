@@ -9,6 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import effective.android.labs.presentation.model.HeroApp
 import effective.android.labs.presentation.screens.HeroSelectionScreen
 import effective.android.labs.presentation.theme.AnroidLabsTheme
 import effective.android.labs.presentation.viewModel.HeroSelectionViewModel
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.secondary
                 ) {
                     val viewModel: HeroSelectionViewModel = viewModel()
-                    HeroSelectionScreen(viewModel)
+                    HeroApp(viewModel)
                 }
             }
         }

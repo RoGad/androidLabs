@@ -5,5 +5,6 @@ import androidx.compose.ui.graphics.Color
 data class HeroData(
     val name: String,
     val imageId: Int,
+    val description: String,
     val triangleColor: Color,
 )

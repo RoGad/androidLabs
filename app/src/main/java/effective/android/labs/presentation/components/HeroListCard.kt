@@ -20,12 +20,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.unit.dp
+import effective.android.labs.presentation.model.HeroData
 import effective.android.labs.presentation.viewModel.HeroSelectionViewModel
 import kotlin.math.abs
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HeroListCard(viewModel: HeroSelectionViewModel) {
+fun HeroListCard(viewModel: HeroSelectionViewModel, onHeroClick: (HeroData) -> Unit) {
     val lazyListState = rememberLazyListState()
 
     val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
@@ -57,7 +58,8 @@ fun HeroListCard(viewModel: HeroSelectionViewModel) {
             HeroCard(
                 heroData = hero,
                 modifier = Modifier
-                    .scale(scale)
+                    .scale(scale),
+                onHeroClick = onHeroClick
             )
         }
     }
