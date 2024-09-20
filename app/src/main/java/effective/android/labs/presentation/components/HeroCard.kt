@@ -1,36 +1,32 @@
 package effective.android.labs.presentation.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import effective.android.labs.R
+import effective.android.labs.constants.heroCardTextPadding
+import effective.android.labs.constants.roundedCornerShapeHeroCard
 import effective.android.labs.presentation.model.HeroData
-import effective.android.labs.presentation.theme.DarkRed
-import effective.android.labs.presentation.theme.White
+import effective.android.labs.presentation.theme.Typography
 
 @Composable
 fun HeroCard(modifier: Modifier = Modifier, heroData: HeroData, onHeroClick: (HeroData) -> Unit) {
-    Card(
+    ElevatedCard(
         modifier = modifier,
-        shape = RoundedCornerShape(10.dp),
-        onClick = { onHeroClick(heroData) }
+        shape = roundedCornerShapeHeroCard,
+        onClick = { onHeroClick(heroData) },
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 5.dp
+        )
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
@@ -43,16 +39,12 @@ fun HeroCard(modifier: Modifier = Modifier, heroData: HeroData, onHeroClick: (He
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(start = 30.dp, bottom = 50.dp),
+                    .padding(heroCardTextPadding),
                 contentAlignment = Alignment.BottomStart
             ) {
                 Text(
                     text = heroData.name,
-                    style = TextStyle(
-                        color = White,
-                        fontSize = 32.sp,
-                        fontWeight = FontWeight.Bold
-                    )
+                    style = Typography.bodyMedium
                 )
             }
         }

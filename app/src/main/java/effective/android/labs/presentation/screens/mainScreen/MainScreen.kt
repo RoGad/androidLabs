@@ -1,4 +1,4 @@
-package effective.android.labs.presentation.screens
+package effective.android.labs.presentation.screens.mainScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -12,15 +12,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import effective.android.labs.R
+import effective.android.labs.constants.logoMarvelSize
 import effective.android.labs.presentation.components.HeroListCard
 import effective.android.labs.presentation.components.RightTriangle
 import effective.android.labs.presentation.model.HeroData
-import effective.android.labs.presentation.theme.White
+import effective.android.labs.presentation.theme.Typography
 import effective.android.labs.presentation.viewModel.HeroSelectionViewModel
 
 @Composable
@@ -35,7 +33,7 @@ fun HeroSelectionScreen(viewModel: HeroSelectionViewModel, onHeroClick: (HeroDat
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.TopCenter)
-                .size(110.dp)
+                .size(logoMarvelSize)
         )
 
         Column(
@@ -45,11 +43,7 @@ fun HeroSelectionScreen(viewModel: HeroSelectionViewModel, onHeroClick: (HeroDat
         ) {
             Text(
                 text = stringResource(id = R.string.choose_your_hero),
-                style = TextStyle(
-                    color = White,
-                    fontSize = 28.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                style = Typography.bodyLarge
             )
             HeroListCard(viewModel = viewModel, onHeroClick = onHeroClick)
         }

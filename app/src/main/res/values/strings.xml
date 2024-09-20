@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">anroidLabs</string>
     <string name="choose_your_hero">Choose your hero</string>
+    <string name="anim_card_bubble">Animation for hero cards in main screen</string>
 </resources>

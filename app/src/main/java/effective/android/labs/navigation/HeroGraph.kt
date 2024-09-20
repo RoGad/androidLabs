@@ -1,4 +1,4 @@
-package effective.android.labs.presentation.model
+package effective.android.labs.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
@@ -6,12 +6,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import effective.android.labs.presentation.screens.HeroInfoScreen
-import effective.android.labs.presentation.screens.HeroSelectionScreen
+import effective.android.labs.presentation.screens.heroInfoScreen.HeroInfoScreen
+import effective.android.labs.presentation.screens.mainScreen.HeroSelectionScreen
 import effective.android.labs.presentation.viewModel.HeroSelectionViewModel
 
 @Composable
-fun HeroApp(viewModel: HeroSelectionViewModel) {
+fun HeroGraph(viewModel: HeroSelectionViewModel) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "heroSelection") {
         composable("heroSelection") {
