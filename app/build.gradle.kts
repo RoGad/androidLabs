@@ -70,4 +70,13 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.5")
     implementation("androidx.navigation:navigation-compose:2.8.0")
 
+    // retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+
+    // moshi
+    implementation(libs.moshi)
+
+    // coil
+    implementation(libs.coil.compose)
 }
