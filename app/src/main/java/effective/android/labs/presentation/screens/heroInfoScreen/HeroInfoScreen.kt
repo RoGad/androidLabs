@@ -16,23 +16,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import coil.compose.AsyncImage
 import effective.android.labs.constants.heroInfoDescriptionPaddingAll
 import effective.android.labs.constants.heroInfoNamePaddingStart
 import effective.android.labs.constants.iconButtonPaddingStart
+import effective.android.labs.network.MarvelCharacter
 import effective.android.labs.presentation.model.HeroData
 import effective.android.labs.presentation.theme.Typography
 import effective.android.labs.presentation.theme.White
 
 @Composable
-fun HeroInfoScreen(heroInfo: HeroData, onBackClick: () -> Unit) {
+fun HeroInfoScreen(hero: MarvelCharacter, onBackClick: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(heroInfo.imageId),
+        AsyncImage(
+            model = "${hero.thumbnail.path}.${hero.thumbnail.extension}",
             contentDescription = null,
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
         )
-
         IconButton(
             onClick = onBackClick,
             modifier = Modifier
@@ -51,18 +52,17 @@ fun HeroInfoScreen(heroInfo: HeroData, onBackClick: () -> Unit) {
             horizontalAlignment = Alignment.Start
         ) {
             Text(
-                text = heroInfo.name,
+                text = hero.name,
                 style = Typography.titleLarge,
                 modifier = Modifier
                     .padding(heroInfoNamePaddingStart)
             )
             Text(
-                text = heroInfo.description,
+                text = hero.description.ifEmpty { "No description available." },
                 style = Typography.labelSmall,
                 modifier = Modifier
                     .padding(heroInfoDescriptionPaddingAll)
             )
-
         }
     }
 }

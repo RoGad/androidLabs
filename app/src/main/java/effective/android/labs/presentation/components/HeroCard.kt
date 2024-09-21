@@ -13,29 +13,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import effective.android.labs.constants.heroCardTextPadding
 import effective.android.labs.constants.roundedCornerShapeHeroCard
+import effective.android.labs.network.MarvelCharacter
 import effective.android.labs.presentation.model.HeroData
 import effective.android.labs.presentation.theme.Typography
 
 @Composable
-fun HeroCard(modifier: Modifier = Modifier, heroData: HeroData, onHeroClick: (HeroData) -> Unit) {
+fun HeroCard(modifier: Modifier = Modifier, hero: MarvelCharacter, onHeroClick: (MarvelCharacter) -> Unit) {
     ElevatedCard(
         modifier = modifier,
         shape = roundedCornerShapeHeroCard,
-        onClick = { onHeroClick(heroData) },
+        onClick = { onHeroClick(hero) },
         elevation = CardDefaults.cardElevation(
             defaultElevation = 5.dp
         )
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
-            Image(
-                painter = painterResource(heroData.imageId),
+            AsyncImage(
+                model = "${hero.thumbnail.path}.${hero.thumbnail.extension}",
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
-
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -43,7 +44,7 @@ fun HeroCard(modifier: Modifier = Modifier, heroData: HeroData, onHeroClick: (He
                 contentAlignment = Alignment.BottomStart
             ) {
                 Text(
-                    text = heroData.name,
+                    text = hero.name,
                     style = Typography.bodyMedium
                 )
             }

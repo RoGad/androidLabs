@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -20,47 +22,55 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.unit.dp
 import effective.android.labs.R
 import effective.android.labs.constants.contentListRowHeroPadding
+import effective.android.labs.network.MarvelCharacter
 import effective.android.labs.presentation.model.HeroData
 import effective.android.labs.presentation.viewModel.HeroSelectionViewModel
 import kotlin.math.abs
 
 @Composable
-fun HeroListCard(viewModel: HeroSelectionViewModel, onHeroClick: (HeroData) -> Unit) {
-    val lazyListState = rememberLazyListState()
+fun HeroListCard(viewModel: HeroSelectionViewModel, onHeroClick: (MarvelCharacter) -> Unit) {
+    val heroes by viewModel.heroes
+    val errorMessage by viewModel.errorMessage
 
-    val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
+    if (errorMessage != null) {
+        Text(text = errorMessage!!, color = MaterialTheme.colorScheme.error)
+    } else {
+        val lazyListState = rememberLazyListState()
 
-    val currentItem by remember {
-        derivedStateOf {
-            lazyListState.layoutInfo.visibleItemsInfo.minByOrNull { abs(it.offset) }?.index ?: 0
+        val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
+
+        val currentItem by remember {
+            derivedStateOf {
+                lazyListState.layoutInfo.visibleItemsInfo.minByOrNull { abs(it.offset) }?.index ?: 0
+            }
         }
-    }
 
-    LaunchedEffect(currentItem) {
-        viewModel.updateCurrentHeroIndex(currentItem)
-    }
+        LaunchedEffect(currentItem) {
+            viewModel.updateCurrentHeroIndex(currentItem)
+        }
 
-    LazyRow(
-        state = lazyListState,
-        flingBehavior = snapBehavior,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(500.dp),
-        contentPadding = contentListRowHeroPadding,
-        horizontalArrangement = Arrangement.spacedBy(40.dp)
-    ) {
-        itemsIndexed(viewModel.heroes) { index, hero ->
-            val scale by animateFloatAsState(
-                targetValue = if (index == currentItem) 1.1f else 1f,
-                animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy),
-                label = R.string.anim_card_bubble.toString()
-            )
-            HeroCard(
-                heroData = hero,
-                modifier = Modifier
-                    .scale(scale),
-                onHeroClick = onHeroClick
-            )
+        LazyRow(
+            state = lazyListState,
+            flingBehavior = snapBehavior,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(500.dp),
+            contentPadding = contentListRowHeroPadding,
+            horizontalArrangement = Arrangement.spacedBy(40.dp)
+        ) {
+            itemsIndexed(heroes) { index, hero ->
+                val scale by animateFloatAsState(
+                    targetValue = if (index == currentItem) 1.1f else 1f,
+                    animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy),
+                    label = R.string.anim_card_bubble.toString()
+                )
+                HeroCard(
+                    hero = hero,
+                    modifier = Modifier
+                        .scale(scale),
+                    onHeroClick = onHeroClick
+                )
+            }
         }
     }
 }

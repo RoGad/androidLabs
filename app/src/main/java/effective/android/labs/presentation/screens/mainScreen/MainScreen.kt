@@ -15,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import effective.android.labs.R
 import effective.android.labs.constants.logoMarvelSize
+import effective.android.labs.network.MarvelCharacter
 import effective.android.labs.presentation.components.HeroListCard
 import effective.android.labs.presentation.components.RightTriangle
 import effective.android.labs.presentation.model.HeroData
@@ -22,12 +23,8 @@ import effective.android.labs.presentation.theme.Typography
 import effective.android.labs.presentation.viewModel.HeroSelectionViewModel
 
 @Composable
-fun HeroSelectionScreen(viewModel: HeroSelectionViewModel, onHeroClick: (HeroData) -> Unit) {
+fun HeroSelectionScreen(viewModel: HeroSelectionViewModel, onHeroClick: (MarvelCharacter) -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
-
-        val triangleColor = viewModel.heroes[viewModel.currentHeroIndex.value].triangleColor
-        RightTriangle(color = triangleColor)
-
         Image(
             painter = painterResource(id = R.drawable.ic_marvel_studios),
             contentDescription = null,
@@ -35,7 +32,6 @@ fun HeroSelectionScreen(viewModel: HeroSelectionViewModel, onHeroClick: (HeroDat
                 .align(Alignment.TopCenter)
                 .size(logoMarvelSize)
         )
-
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
