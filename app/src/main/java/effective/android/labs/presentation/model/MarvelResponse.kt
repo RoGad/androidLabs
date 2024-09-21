@@ -1,7 +1,6 @@
-package effective.android.labs.network
+package effective.android.labs.presentation.model
 
 import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
 data class MarvelResponse<T>(
     @Json(name = "data") val data: MarvelData<T>

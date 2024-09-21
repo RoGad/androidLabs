@@ -1,17 +1,11 @@
 package effective.android.labs.presentation.viewModel
 
 import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import effective.android.labs.R
-import effective.android.labs.network.MarvelCharacter
+import effective.android.labs.presentation.model.MarvelCharacter
 import effective.android.labs.network.MarvelRepository
-import effective.android.labs.presentation.model.HeroData
-import effective.android.labs.presentation.theme.DarkRed
-import effective.android.labs.presentation.theme.DarkYellow
-import effective.android.labs.presentation.theme.RedDeadpool
 import kotlinx.coroutines.launch
 
 class HeroSelectionViewModel : ViewModel() {
@@ -21,7 +15,6 @@ class HeroSelectionViewModel : ViewModel() {
     val heroes: State<List<MarvelCharacter>> = _heroes
 
     private val _currentHeroIndex = mutableStateOf(0)
-    val currentHeroIndex: State<Int> = _currentHeroIndex
 
     private val _errorMessage = mutableStateOf<String?>(null)
     val errorMessage: State<String?> = _errorMessage

@@ -1,5 +1,7 @@
 package effective.android.labs.network
 
+import effective.android.labs.presentation.model.MarvelCharacter
+import effective.android.labs.presentation.model.MarvelResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -1,6 +1,5 @@
 package effective.android.labs.presentation.screens.heroInfoScreen
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,13 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import coil.compose.AsyncImage
 import effective.android.labs.constants.heroInfoDescriptionPaddingAll
 import effective.android.labs.constants.heroInfoNamePaddingStart
 import effective.android.labs.constants.iconButtonPaddingStart
-import effective.android.labs.network.MarvelCharacter
-import effective.android.labs.presentation.model.HeroData
+import effective.android.labs.presentation.model.MarvelCharacter
 import effective.android.labs.presentation.theme.Typography
 import effective.android.labs.presentation.theme.White
 

@@ -7,6 +7,7 @@ import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -22,8 +23,8 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.unit.dp
 import effective.android.labs.R
 import effective.android.labs.constants.contentListRowHeroPadding
-import effective.android.labs.network.MarvelCharacter
-import effective.android.labs.presentation.model.HeroData
+import effective.android.labs.constants.sizeHeroCard
+import effective.android.labs.presentation.model.MarvelCharacter
 import effective.android.labs.presentation.viewModel.HeroSelectionViewModel
 import kotlin.math.abs
 
@@ -35,6 +36,7 @@ fun HeroListCard(viewModel: HeroSelectionViewModel, onHeroClick: (MarvelCharacte
     if (errorMessage != null) {
         Text(text = errorMessage!!, color = MaterialTheme.colorScheme.error)
     } else {
+
         val lazyListState = rememberLazyListState()
 
         val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
@@ -67,7 +69,8 @@ fun HeroListCard(viewModel: HeroSelectionViewModel, onHeroClick: (MarvelCharacte
                 HeroCard(
                     hero = hero,
                     modifier = Modifier
-                        .scale(scale),
+                        .scale(scale)
+                        .size(sizeHeroCard),
                     onHeroClick = onHeroClick
                 )
             }

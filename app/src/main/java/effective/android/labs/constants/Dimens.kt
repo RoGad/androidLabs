@@ -11,5 +11,6 @@ val heroInfoDescriptionPaddingAll = PaddingValues(bottom = 32.dp, start = 32.dp,
 val heroCardTextPadding = PaddingValues(start = 30.dp, bottom = 50.dp)
 val contentListRowHeroPadding = PaddingValues(horizontal = 40.dp)
 val logoMarvelSize = DpSize(110.dp, 110.dp)
+val sizeHeroCard = DpSize(290.dp, 500.dp)
 
 val roundedCornerShapeHeroCard = RoundedCornerShape(10.dp)
