@@ -12,7 +12,7 @@ interface MarvelApiService {
         @Query("apikey") apiKey: String,
         @Query("ts") timestamp: String,
         @Query("hash") hash: String,
-        @Query("limit") limit: Int = 20
+        @Query("limit") limit: Int = 100
     ): MarvelResponse<MarvelCharacter>
 
     @GET("v1/public/characters/{characterId}")

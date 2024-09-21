@@ -1,6 +1,7 @@
 package effective.android.labs.presentation.viewModel
 
 import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,7 +15,7 @@ class HeroSelectionViewModel : ViewModel() {
     private val _heroes = mutableStateOf<List<MarvelCharacter>>(emptyList())
     val heroes: State<List<MarvelCharacter>> = _heroes
 
-    private val _currentHeroIndex = mutableStateOf(0)
+    private val _currentHeroIndex = mutableIntStateOf(0)
 
     private val _errorMessage = mutableStateOf<String?>(null)
     val errorMessage: State<String?> = _errorMessage
@@ -34,7 +35,7 @@ class HeroSelectionViewModel : ViewModel() {
     }
 
     fun updateCurrentHeroIndex(index: Int) {
-        _currentHeroIndex.value = index
+        _currentHeroIndex.intValue = index
     }
 
     fun getHeroById(id: Int): MarvelCharacter? {

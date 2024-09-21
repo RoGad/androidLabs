@@ -1,7 +1,7 @@
 package effective.android.labs.network
 
-import effective.android.labs.constants.SecretData.privateKey
-import effective.android.labs.constants.SecretData.publicKey
+import effective.android.labs.constants.SecretData.PRIVATE_KEY
+import effective.android.labs.constants.SecretData.PUBLIC_KEY
 import effective.android.labs.presentation.model.MarvelCharacter
 import java.math.BigInteger
 
@@ -10,8 +10,8 @@ class MarvelRepository {
 
     suspend fun getCharacters(): List<MarvelCharacter> {
         val timestamp = System.currentTimeMillis().toString()
-        val hash = generateHash(timestamp, privateKey, publicKey)
-        return apiService.getCharacters(publicKey, timestamp, hash).data.results
+        val hash = generateHash(timestamp, PRIVATE_KEY, PUBLIC_KEY)
+        return apiService.getCharacters(PUBLIC_KEY, timestamp, hash).data.results
     }
 
     private fun generateHash(timestamp: String, privateKey: String, publicKey: String): String {
