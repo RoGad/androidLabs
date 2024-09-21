@@ -29,16 +29,14 @@ import effective.android.labs.presentation.viewModel.HeroSelectionViewModel
 import kotlin.math.abs
 
 @Composable
-fun HeroListCard(viewModel: HeroSelectionViewModel, onHeroClick: (MarvelCharacter) -> Unit) {
+fun HeroListCard(viewModel: HeroSelectionViewModel, onHeroClick: (MarvelCharacter) -> Unit, onItemChanged: () -> Unit) {
     val heroes by viewModel.heroes
     val errorMessage by viewModel.errorMessage
 
     if (errorMessage != null) {
         Text(text = errorMessage!!, color = MaterialTheme.colorScheme.error)
     } else {
-
         val lazyListState = rememberLazyListState()
-
         val snapBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
 
         val currentItem by remember {
@@ -49,6 +47,7 @@ fun HeroListCard(viewModel: HeroSelectionViewModel, onHeroClick: (MarvelCharacte
 
         LaunchedEffect(currentItem) {
             viewModel.updateCurrentHeroIndex(currentItem)
+            onItemChanged()
         }
 
         LazyRow(

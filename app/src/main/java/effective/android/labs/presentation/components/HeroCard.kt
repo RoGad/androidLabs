@@ -45,7 +45,9 @@ fun HeroCard(modifier: Modifier = Modifier, hero: MarvelCharacter, onHeroClick: 
                     text = hero.name,
                     style = Typography.bodyLarge,
                     color = Color.White,
-                    modifier = Modifier.padding(heroCardTextPadding).align(Alignment.BottomCenter)
+                    modifier = Modifier
+                        .padding(heroCardTextPadding)
+                        .align(Alignment.BottomCenter)
                 )
             }
         }
