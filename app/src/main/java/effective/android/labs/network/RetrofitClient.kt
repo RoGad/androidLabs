@@ -2,6 +2,8 @@ package effective.android.labs.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import effective.android.labs.constants.SecretData.PRIVATE_KEY
+import effective.android.labs.constants.SecretData.PUBLIC_KEY
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,9 +20,13 @@ object RetrofitClient {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
+    private val marvelInterceptor = MarvelApiInterceptor(PUBLIC_KEY, PRIVATE_KEY)
+
     private val client = OkHttpClient.Builder()
         .addInterceptor(logging)
+        .addInterceptor(marvelInterceptor)
         .build()
+
     val apiService: MarvelApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
