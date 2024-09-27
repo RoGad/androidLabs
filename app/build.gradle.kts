@@ -79,4 +79,8 @@ dependencies {
 
     // coil
     implementation(libs.coil.compose)
+
+    // room
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
 }
