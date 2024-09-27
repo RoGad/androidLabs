@@ -13,24 +13,25 @@ import effective.android.labs.presentation.viewModel.HeroSelectionViewModel
 @Composable
 fun HeroGraph(viewModel: HeroSelectionViewModel) {
     val navController = rememberNavController()
+
     NavHost(navController = navController, startDestination = "heroSelection") {
         composable("heroSelection") {
             HeroSelectionScreen(
                 viewModel = viewModel,
                 onHeroClick = { hero ->
-                    navController.navigate("heroInfo/${hero.name}")
+                    navController.navigate("heroInfo/${hero.id}")
                 }
             )
         }
         composable(
-            "heroInfo/{heroName}",
-            arguments = listOf(navArgument("heroName") { type = NavType.StringType })
+            "heroInfo/{heroId}",
+            arguments = listOf(navArgument("heroId") { type = NavType.IntType })
         ) { backStackEntry ->
-            val heroName = backStackEntry.arguments?.getString("heroName")
-            val hero = viewModel.heroes.find { it.name == heroName }
+            val heroId = backStackEntry.arguments?.getInt("heroId")
+            val hero = heroId?.let { viewModel.getHeroById(it) }
             hero?.let {
                 HeroInfoScreen(
-                    heroInfo = it,
+                    hero = it,
                     onBackClick = { navController.popBackStack() }
                 )
             }

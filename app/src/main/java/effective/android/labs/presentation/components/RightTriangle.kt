@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.tooling.preview.Preview
 import effective.android.labs.presentation.theme.DarkRed
+import kotlin.random.Random
 
 @Composable
 fun RightTriangle(color: Color) {
@@ -29,8 +30,11 @@ fun RightTriangle(color: Color) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewRightTriangle() {
-    RightTriangle(color = DarkRed)
+fun randomColor(): Color {
+    return Color(
+        red = Random.nextFloat(),
+        green = Random.nextFloat(),
+        blue = Random.nextFloat(),
+        alpha = 1f
+    )
 }
